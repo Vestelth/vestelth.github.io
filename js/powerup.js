@@ -20,15 +20,19 @@ let interactiveObjects = () => {
   $('.exit').css({'top' : exitY});
 
   let playerExit = () => {
-    let playerX = $('.player').position().left;
-    let playerY = $('.player').position().top;
+    if ($('.player').length === 0){
+      return false;
+    } else {
+      let playerX = $('.player').position().left;
+      let playerY = $('.player').position().top;
 
-    if (exitX < playerX + playerSize &&
-        exitX + exitSize > playerX &&
-        exitY < playerY + playerSize &&
-        exitY + exitSize > playerY)
-    {
-      return true;
+      if (exitX < playerX + playerSize &&
+          exitX + exitSize > playerX &&
+          exitY < playerY + playerSize &&
+          exitY + exitSize > playerY)
+      {
+        return true;
+      }
     }
   }
 
@@ -46,16 +50,20 @@ let interactiveObjects = () => {
   $('.powerup').css({'top' : powY});
 
   let playerPower = () => {
-    let playerX = $('.player').position().left;
-    let playerY = $('.player').position().top;
+    if ($('.player').length === 0){
+      return false;
+    } else {
+      let playerX = $('.player').position().left;
+      let playerY = $('.player').position().top;
 
-    if (powX < playerX + playerSize &&
-        powX + powSize > playerX &&
-        powY < playerY + playerSize &&
-        powY + powSize > playerY)
-    {
-      $('.powerup').fadeOut(50);
-      return true;
+      if (powX < playerX + playerSize &&
+          powX + powSize > playerX &&
+          powY < playerY + playerSize &&
+          powY + powSize > playerY)
+      {
+        $('.powerup').fadeOut(50);
+        return true;
+      }
     }
   }
 

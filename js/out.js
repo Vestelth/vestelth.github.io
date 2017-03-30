@@ -173,20 +173,24 @@ var ghostMovement = function ghostMovement() {
 
   var ghostEatsPlayer = function ghostEatsPlayer() {
 
-    var playerX = $('.player').position().left;
-    var playerY = $('.player').position().top;
-    var playerSize = parseInt($('.player').css('width'));
-    var monstah = $('.ghost');
+    if ($('.player').length === 0) {
+      return false;
+    } else {
+      var playerX = $('.player').position().left;
+      var playerY = $('.player').position().top;
+      var playerSize = parseInt($('.player').css('width'));
+      var monstah = $('.ghost');
 
-    monstah.each(function (index) {
-      var ghostX = $(this).position().left;
-      var ghostY = $(this).position().top;
-      var ghostSize = parseInt($(this).css('width'));
+      monstah.each(function (index) {
+        var ghostX = $(this).position().left;
+        var ghostY = $(this).position().top;
+        var ghostSize = parseInt($(this).css('width'));
 
-      if (ghostX < playerX + playerSize && ghostX + ghostSize > playerX && ghostY < playerY + playerSize && ghostY + ghostSize > playerY) {
-        $('.player').fadeOut(200);
-      }
-    });
+        if (ghostX < playerX + playerSize && ghostX + ghostSize > playerX && ghostY < playerY + playerSize && ghostY + ghostSize > playerY) {
+          $('.player').fadeOut(200);
+        }
+      });
+    }
   };
 
   // checks if ghost eats player
@@ -703,11 +707,15 @@ var interactiveObjects = function interactiveObjects() {
   $('.exit').css({ 'top': exitY });
 
   var playerExit = function playerExit() {
-    var playerX = $('.player').position().left;
-    var playerY = $('.player').position().top;
+    if ($('.player').length === 0) {
+      return false;
+    } else {
+      var playerX = $('.player').position().left;
+      var playerY = $('.player').position().top;
 
-    if (exitX < playerX + playerSize && exitX + exitSize > playerX && exitY < playerY + playerSize && exitY + exitSize > playerY) {
-      return true;
+      if (exitX < playerX + playerSize && exitX + exitSize > playerX && exitY < playerY + playerSize && exitY + exitSize > playerY) {
+        return true;
+      }
     }
   };
 
@@ -725,12 +733,16 @@ var interactiveObjects = function interactiveObjects() {
   $('.powerup').css({ 'top': powY });
 
   var playerPower = function playerPower() {
-    var playerX = $('.player').position().left;
-    var playerY = $('.player').position().top;
+    if ($('.player').length === 0) {
+      return false;
+    } else {
+      var playerX = $('.player').position().left;
+      var playerY = $('.player').position().top;
 
-    if (powX < playerX + playerSize && powX + powSize > playerX && powY < playerY + playerSize && powY + powSize > playerY) {
-      $('.powerup').fadeOut(50);
-      return true;
+      if (powX < playerX + playerSize && powX + powSize > playerX && powY < playerY + playerSize && powY + powSize > playerY) {
+        $('.powerup').fadeOut(50);
+        return true;
+      }
     }
   };
 
