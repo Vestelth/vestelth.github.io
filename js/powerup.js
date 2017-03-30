@@ -80,7 +80,7 @@ let interactiveObjects = () => {
   levelMusic.play();
 
   let gameOverListener = setInterval( () => {
-    if($('.player').css('display') == 'none'){
+    if($('.player').css('display') == 'none' || $('.player').length === 0){
       clearInterval(gameOverListener);
       levelMusic.pause();
       deathSound.play();

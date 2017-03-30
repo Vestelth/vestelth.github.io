@@ -707,8 +707,6 @@ var interactiveObjects = function interactiveObjects() {
     var playerY = $('.player').position().top;
 
     if (exitX < playerX + playerSize && exitX + exitSize > playerX && exitY < playerY + playerSize && exitY + exitSize > playerY) {
-      $('.exit').addClass('blink');
-      // WON GAME SCREEN
       return true;
     }
   };
@@ -739,6 +737,7 @@ var interactiveObjects = function interactiveObjects() {
   var exitListener = setInterval(function () {
     if ($('.ghost').length === 0 && playerExit()) {
       clearInterval(exitListener);
+      $('.exit').addClass('blink');
       levelMusic.pause();
       exitSound.play();
       $(document).unbind();
@@ -756,7 +755,7 @@ var interactiveObjects = function interactiveObjects() {
   levelMusic.play();
 
   var gameOverListener = setInterval(function () {
-    if ($('.player').css('display') == 'none') {
+    if ($('.player').css('display') == 'none' || $('.player').length === 0) {
       clearInterval(gameOverListener);
       levelMusic.pause();
       deathSound.play();
