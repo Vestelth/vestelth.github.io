@@ -56,11 +56,17 @@ div.menu {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  text-align: center;
 }
 
 div.menu {
   padding-top: 7.4em;
 }
+
+div.menu p {
+  margin: 0 2em;
+}
+
 div.menu h1.title {
   font-family: 'Macondo', serif;
   font-size: 4.2em;
